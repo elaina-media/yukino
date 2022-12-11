@@ -1,5 +1,5 @@
 # Yukino
-The major data model abstraction module for elaina media.
+The major model abstraction module.
 
 Yukino can help you to describe a model more easily.
 

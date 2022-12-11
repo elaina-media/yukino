@@ -1,11 +1,7 @@
 package net.mikoto.yukino.parser;
 
-import lombok.extern.log4j.Log4j2;
-import net.mikoto.yukino.manager.YukinoModelManager;
-import net.mikoto.yukino.model.YukinoModel;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -13,32 +9,23 @@ import java.io.IOException;
  * @date 2022/12/11
  * Create for yukino
  */
-@Log4j2
-public abstract class ParserHandler {
-    private ParserHandler next;
-    private final YukinoModelManager yukinoModelManager;
+public abstract class ParserHandler<T, R> {
+    private ParserHandler<?, ?> next;
 
-    protected ParserHandler(YukinoModelManager yukinoModelManager) {
-        this.yukinoModelManager = yukinoModelManager;
-    }
-
-    public ParserHandler setNext(ParserHandler next) {
+    public ParserHandler<?, ?> setNext(ParserHandler<?, ?> next) {
         this.next = next;
         return next;
     }
 
-    public final void parserHandle(File file) throws IOException {
-        yukinoModelManager.register(doParse(file));
+    public void parserHandle(Object target) throws IOException {
         if (next != null) {
-            next.parserHandle(file);
+            next.parserHandle(target);
         } else {
-            parsed(file);
+            parsed(target);
         }
     }
 
-    protected void parsed(@NotNull File file) {
-        log.info("[Yukino] Parsed file -> " + file.getName());
-    }
+    protected abstract void parsed(@NotNull Object target);
 
-    protected abstract YukinoModel doParse(File file) throws IOException;
+    protected abstract R doParse(T target) throws IOException;
 }

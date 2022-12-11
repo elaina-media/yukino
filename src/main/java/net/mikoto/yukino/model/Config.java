@@ -10,6 +10,6 @@ import net.mikoto.yukino.parser.ParserHandler;
  */
 @Data
 public class Config {
-    ParserHandler[] parserHandlers;
+    ParserHandler<?, ?>[] parserHandlers;
     String modelsPath = "/models";
 }

@@ -6,7 +6,7 @@ import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;
-import net.mikoto.yukino.parser.ParserHandler;
+import net.mikoto.yukino.parser.YukinoModelParserHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -18,15 +18,15 @@ import java.io.IOException;
  * @date 2022/12/11
  * Create for yukino
  */
-public class JsonModelParser extends ParserHandler {
-    public JsonModelParser(YukinoModelManager yukinoModelManager) {
+public class JsonFileModelParser extends YukinoModelParserHandler {
+    public JsonFileModelParser(YukinoModelManager yukinoModelManager) {
         super(yukinoModelManager);
     }
 
     @Override
-    protected YukinoModel doParse(@NotNull File file) throws IOException {
-        if (file.getName().endsWith(".json")) {
-            JSONObject rawModel = JSON.parseObject(new FileInputStream(file));
+    protected YukinoModel doParse(@NotNull File target) throws IOException {
+        if (target.getName().endsWith(".json")) {
+            JSONObject rawModel = JSON.parseObject(new FileInputStream(target));
             YukinoModel yukinoModel;
 
             JSONArray fields = rawModel.getJSONArray("fields");

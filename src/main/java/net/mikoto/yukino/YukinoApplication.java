@@ -1,5 +1,7 @@
 package net.mikoto.yukino;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
@@ -16,15 +18,22 @@ import static net.mikoto.yukino.util.FileUtil.createDir;
  * Create for yukino
  */
 @Log4j2
+@Getter
+@Setter
 public class YukinoApplication {
-    private ParserHandler parserHandler;
+    private ParserHandler<?, ?> parserHandler;
+    private Config config;
     public YukinoApplication(@NotNull Config config) throws IOException {
         log.info("[Yukino] Started");
+        this.config = config;
+    }
 
+    public void doScan(@NotNull Config config) throws IOException {
         // Do scan and parser
+        this.config = config;
         if (config.getParserHandlers().length > 0) {
             parserHandler = config.getParserHandlers()[0];
-            ParserHandler lastHandler = parserHandler;
+            ParserHandler<?, ?> lastHandler = parserHandler;
             for (int i = 1; i < config.getParserHandlers().length; i++) {
                 lastHandler = lastHandler.setNext(config.getParserHandlers()[i]);
             }
