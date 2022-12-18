@@ -19,7 +19,10 @@ public abstract class YukinoModelParserHandler extends FileParserHandler<YukinoM
 
     @Override
     public void parserHandle(Object file) throws IOException {
-        yukinoModelManager.register(doParse((File) file));
+        YukinoModel yukinoModel = doParse((File) file);
+        if (yukinoModel != null) {
+            yukinoModelManager.register(yukinoModel);
+        }
         super.parserHandle(file);
     }
 }

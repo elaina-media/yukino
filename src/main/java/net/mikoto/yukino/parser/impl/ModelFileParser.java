@@ -18,14 +18,14 @@ import java.io.IOException;
  * @date 2022/12/11
  * Create for yukino
  */
-public class JsonFileModelParser extends YukinoModelParserHandler {
-    public JsonFileModelParser(YukinoModelManager yukinoModelManager) {
+public class ModelFileParser extends YukinoModelParserHandler {
+    public ModelFileParser(YukinoModelManager yukinoModelManager) {
         super(yukinoModelManager);
     }
 
     @Override
     protected YukinoModel doParse(@NotNull File target) throws IOException {
-        if (target.getName().endsWith(".json")) {
+        if (target.getName().endsWith(".model.json")) {
             JSONObject rawModel = JSON.parseObject(new FileInputStream(target));
             YukinoModel yukinoModel;
 

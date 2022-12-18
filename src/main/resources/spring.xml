@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="yukinoDataService" class="net.mikoto.yukino.service.YukinoDataService"/>
+    <bean id="yukinoJsonManager" class="net.mikoto.yukino.manager.YukinoJsonManager"/>
+    <bean id="yukinoModelManager" class="net.mikoto.yukino.manager.YukinoModelManager"/>
+    <bean id="yukinoConfigManager" class="net.mikoto.yukino.manager.YukinoConfigManager"/>
+    <bean id="yukinoApplication" class="net.mikoto.yukino.YukinoApplication">
+        <constructor-arg index="0" ref="yukinoConfigManager"/>
+        <constructor-arg index="1" ref="yukinoJsonManager"/>
+        <constructor-arg index="2" ref="yukinoModelManager"/>
+
+    </bean>
+</beans>

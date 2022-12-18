@@ -3,9 +3,14 @@ package net.mikoto.yukino;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
+import net.mikoto.yukino.manager.YukinoConfigManager;
+import net.mikoto.yukino.manager.YukinoJsonManager;
+import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,15 +27,23 @@ import static net.mikoto.yukino.util.FileUtil.createDir;
 @Setter
 public class YukinoApplication {
     private ParserHandler<?, ?> parserHandler;
-    private Config config;
-    public YukinoApplication(@NotNull Config config) throws IOException {
+    private YukinoConfigManager yukinoConfigManager;
+    private final YukinoModelManager yukinoModelManager;
+    private final YukinoJsonManager yukinoJsonManager;
+    public YukinoApplication(YukinoConfigManager yukinoConfigManager, YukinoJsonManager yukinoJsonManager, YukinoModelManager yukinoModelManager) throws IOException {
+        this.yukinoModelManager = yukinoModelManager;
+        this.yukinoJsonManager = yukinoJsonManager;
+        this.yukinoConfigManager = yukinoConfigManager;
         log.info("[Yukino] Started");
-        this.config = config;
     }
 
-    public void doScan(@NotNull Config config) throws IOException {
+    public void doScan(String name) throws IOException {
+        doScan(yukinoConfigManager, name);
+    }
+
+    public void doScan(@NotNull YukinoConfigManager yukinoConfigManager, String name) throws IOException {
         // Do scan and parser
-        this.config = config;
+        Config config = yukinoConfigManager.get(name);
         if (config.getParserHandlers().length > 0) {
             parserHandler = config.getParserHandlers()[0];
             ParserHandler<?, ?> lastHandler = parserHandler;
