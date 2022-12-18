@@ -1,7 +1,7 @@
 # Yukino
 The major model abstraction module.
 
-Yukino can help you to describe a model more easily.
+Yukino is a simple data persistence tool that integrates SpringFramework and MyBatis. Its biggest feature is the use of JSON files to abstract models. Yukino can make it easier for you to use JSON models, and also provides dependencies for other projects of Elaina Media.
 
 ## Statement
 ### All development is for learning, please do not use for illegal purposes.
