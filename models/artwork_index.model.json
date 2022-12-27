@@ -30,6 +30,6 @@
   ],
   "tableNameStrategy" : {
     "type": "net.mikoto.yukino.mapper.strategy.impl.IntegerModuloStrategy",
-    "value": ["artworkId", "artwork_%i", 100]
+    "value": ["artworkId", "artwork_index_%i", 50]
   }
 }

@@ -1,6 +1,5 @@
 package net.mikoto.yukino.test;
 
-import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.YukinoApplication;
 import net.mikoto.yukino.manager.YukinoConfigManager;
@@ -19,7 +18,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,9 +26,6 @@ import java.util.Map;
  * Create for yukino
  */
 public class YukinoTestApplication {
-
-
-
     @Test
     public void applicationTest() throws IOException {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
@@ -47,7 +42,7 @@ public class YukinoTestApplication {
         yukinoApplication.doScan("default");
         System.out.println();
 
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
         SqlSession sqlSession = sqlSessionFactory.openSession();
         YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
         Map<String, Object> map = new HashMap<>();
