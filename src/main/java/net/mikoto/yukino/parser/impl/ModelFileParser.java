@@ -49,7 +49,6 @@ public class ModelFileParser extends YukinoModelParserHandler {
                         rawModel.getObject("tableNameStrategy", InstantiableObject.class)
                 );
 
-
                 rawModel.remove("fields");
                 rawModel.remove("tableNameStrategy");
 

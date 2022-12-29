@@ -13,9 +13,7 @@
         </environment>
     </environments>
 
-
     <mappers>
         <mapper resource="YukinoDataMapper.xml"/>
     </mappers>
-
 </configuration>

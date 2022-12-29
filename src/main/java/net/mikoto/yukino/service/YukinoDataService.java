@@ -3,6 +3,7 @@ package net.mikoto.yukino.service;
 import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.mapper.YukinoDataMapper;
+import net.mikoto.yukino.mapper.strategy.PrimaryKeyGenerateStrategy;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;
@@ -23,23 +24,37 @@ public class YukinoDataService {
     private final YukinoModelManager yukinoModelManager;
     public YukinoDataService(YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
         this.yukinoConfigManager = yukinoConfigManager;
-        this.yukinoModelManager = yukinoModelManager;;
+        this.yukinoModelManager = yukinoModelManager;
     }
 
-    private void doInsert(@NotNull YukinoDataMapper mapper, String tableName, Map<String, Object> data) {
+    private void doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, String tableName, Map<String, Object> data) {
         Map<String, Object> map = new HashMap<>();
-        map.put("tableName", tableName);
+        map.put("tableName", yukinoModel.getTableNameStrategy().getTableName(data));
         map.put("columnMap", data);
         mapper.insert(map);
     }
 
-    private void doCheckModel(boolean isCheckModel, YukinoModel yukinoModel, Map<String, Object> data) throws NoSuchFieldException {
+    private void doCheckModel(boolean isCheckModel, @NotNull YukinoModel yukinoModel, @NotNull Map<String, Object> data) throws NoSuchFieldException {
+        // Insert primary key
+        Field idField = yukinoModel.getFields()[yukinoModel.getIdFieldIndex()];
+        if (!data.containsKey(idField.getFieldName())) {
+            PrimaryKeyGenerateStrategy<?> pkGenerateStrategy = yukinoModel.getPkGenerateStrategy();
+            if (pkGenerateStrategy != null) {
+                data.put(idField.getFieldName(), yukinoModel.getPkGenerateStrategy().generateKey());
+            }
+        }
+
         if (isCheckModel) {
+            // Check data length
+            if (data.size() != yukinoModel.getFields().length) {
+                throw new RuntimeException("Wrong data size.");
+            }
+
+            // Check fields
             for (Field field :
                     yukinoModel.getFields()) {
-                Object o = data.get(field.getFieldName());
-                if (o == null) {
-                    throw new NoSuchFieldException("No such field: " + field.getFieldName() + " in the data.");
+                if (!data.containsKey(field.getFieldName())) {
+                    throw new RuntimeException("Wrong field.");
                 }
             }
         }
@@ -55,7 +70,7 @@ public class YukinoDataService {
         for (Map<String, Object> singleData :
                 data) {
             doCheckModel(config.isCheckModel(), yukinoModel, singleData);
-            doInsert(mapper, tableName, singleData);
+            doInsert(yukinoModel, mapper, tableName, singleData);
         }
 
         sqlSession.commit();
@@ -70,7 +85,7 @@ public class YukinoDataService {
         YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
 
         doCheckModel(config.isCheckModel(), yukinoModel, data);
-        doInsert(mapper, tableName, data);
+        doInsert(yukinoModel, mapper, tableName, data);
 
         sqlSession.commit();
         sqlSession.close();
