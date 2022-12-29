@@ -5,6 +5,7 @@ import net.mikoto.yukino.model.YukinoModel;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author mikoto
@@ -18,7 +19,7 @@ public abstract class YukinoModelParserHandler extends FileParserHandler<YukinoM
     }
 
     @Override
-    public void parserHandle(Object file) throws IOException {
+    public void parserHandle(Object file) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         YukinoModel yukinoModel = doParse((File) file);
         if (yukinoModel != null) {
             yukinoModelManager.register(yukinoModel);

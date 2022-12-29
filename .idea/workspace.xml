@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Add Strategy and do other many things">
+    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Change YukinoDataService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/model/YukinoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/model/YukinoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/artwork.model.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/artwork.model.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/artwork_index.model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/JsonObjectParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/JsonObjectParserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/ParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/ParserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/YukinoModelParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/YukinoModelParserHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/impl/ModelFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/impl/ModelFileParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +166,7 @@
       <workItem from="1672275541091" duration="675000" />
       <workItem from="1672300612551" duration="1750000" />
       <workItem from="1672311944158" duration="2170000" />
-      <workItem from="1672320625138" duration="1805000" />
+      <workItem from="1672320625138" duration="5611000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1670677006779</created>
@@ -204,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672122885727</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[Feat] Change YukinoDataService">
+      <created>1672322481724</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672322481724</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,7 +244,8 @@
     <MESSAGE value="[Feat] Add MyBatis" />
     <MESSAGE value="[Doc] README.md" />
     <MESSAGE value="[Feat] Add Strategy and do other many things" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Add Strategy and do other many things" />
+    <MESSAGE value="[Feat] Change YukinoDataService" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Change YukinoDataService" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

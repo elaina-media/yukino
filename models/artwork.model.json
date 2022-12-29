@@ -30,6 +30,7 @@
   ],
   "tableNameStrategy" : {
     "type": "net.mikoto.yukino.mapper.strategy.impl.IntegerModuloStrategy",
-    "value": ["artworkId", "artwork_%i", 100]
+    "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
+    "values": ["pk_artwork_id", "artwork_%i", 100]
   }
 }

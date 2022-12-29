@@ -27,14 +27,14 @@ public class YukinoDataService {
         this.yukinoModelManager = yukinoModelManager;
     }
 
-    private void doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, String tableName, Map<String, Object> data) {
+    private void doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, Map<String, Object> data) {
         Map<String, Object> map = new HashMap<>();
         map.put("tableName", yukinoModel.getTableNameStrategy().getTableName(data));
         map.put("columnMap", data);
         mapper.insert(map);
     }
 
-    private void doCheckModel(boolean isCheckModel, @NotNull YukinoModel yukinoModel, @NotNull Map<String, Object> data) throws NoSuchFieldException {
+    private void doCheckModel(boolean isCheckModel, @NotNull YukinoModel yukinoModel, @NotNull Map<String, Object> data) {
         // Insert primary key
         Field idField = yukinoModel.getFields()[yukinoModel.getIdFieldIndex()];
         if (!data.containsKey(idField.getFieldName())) {
@@ -60,7 +60,7 @@ public class YukinoDataService {
         }
     }
 
-    public void insert(Map<String, Object> @NotNull [] data, String modelName, String configName, String tableName) throws NoSuchFieldException {
+    public void insert(Map<String, Object> @NotNull [] data, String modelName, String configName) {
         Config config = yukinoConfigManager.get(configName);
         YukinoModel yukinoModel = yukinoModelManager.get(modelName);
         SqlSessionFactory sqlSessionFactory = config.getSqlSessionFactory();
@@ -70,14 +70,14 @@ public class YukinoDataService {
         for (Map<String, Object> singleData :
                 data) {
             doCheckModel(config.isCheckModel(), yukinoModel, singleData);
-            doInsert(yukinoModel, mapper, tableName, singleData);
+            doInsert(yukinoModel, mapper, singleData);
         }
 
         sqlSession.commit();
         sqlSession.close();
     }
 
-    public void insert(Map<String, Object> data, String modelName, String configName, String tableName) throws NoSuchFieldException {
+    public void insert(Map<String, Object> data, String modelName, String configName) {
         Config config = yukinoConfigManager.get(configName);
         YukinoModel yukinoModel = yukinoModelManager.get(modelName);
         SqlSessionFactory sqlSessionFactory = config.getSqlSessionFactory();
@@ -85,7 +85,7 @@ public class YukinoDataService {
         YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
 
         doCheckModel(config.isCheckModel(), yukinoModel, data);
-        doInsert(yukinoModel, mapper, tableName, data);
+        doInsert(yukinoModel, mapper, data);
 
         sqlSession.commit();
         sqlSession.close();

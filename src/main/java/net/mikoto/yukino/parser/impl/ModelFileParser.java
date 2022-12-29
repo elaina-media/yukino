@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.manager.YukinoModelManager;
+import net.mikoto.yukino.mapper.strategy.PrimaryKeyGenerateStrategy;
 import net.mikoto.yukino.mapper.strategy.TableNameStrategy;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;
@@ -49,8 +50,17 @@ public class ModelFileParser extends YukinoModelParserHandler {
                         rawModel.getObject("tableNameStrategy", InstantiableObject.class)
                 );
 
+                InstantiableObject primaryKeyGenerateStrategyObj = rawModel.getObject("primaryKeyGenerateStrategy", InstantiableObject.class);
+
+                if (primaryKeyGenerateStrategyObj != null) {
+                    // Instance the primaryKeyGenerateStrategy
+                    PrimaryKeyGenerateStrategy<?> primaryKeyGenerateStrategy =
+                            (PrimaryKeyGenerateStrategy<?>) InstantiableObject.instance(primaryKeyGenerateStrategyObj);
+                }
+
                 rawModel.remove("fields");
                 rawModel.remove("tableNameStrategy");
+                rawModel.remove("primaryKeyGenerateStrategy");
 
                 yukinoModel = rawModel.to(YukinoModel.class);
                 yukinoModel.setFields(fieldsResult);

@@ -5,6 +5,7 @@ import net.mikoto.yukino.manager.YukinoJsonManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * @author mikoto
@@ -19,7 +20,7 @@ public abstract class JsonObjectParserHandler extends FileParserHandler<JSONObje
     }
 
     @Override
-    public void parserHandle(Object target) throws IOException {
+    public void parserHandle(Object target) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         yukinoJsonManager.put(((File) target).getName(), doParse((File) target));
         super.parserHandle(target);
     }

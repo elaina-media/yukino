@@ -18,7 +18,7 @@ public abstract class ParserHandler<T, R> {
         return next;
     }
 
-    public void parserHandle(Object target) throws IOException {
+    public void parserHandle(Object target) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         if (next != null) {
             next.parserHandle(target);
         } else {

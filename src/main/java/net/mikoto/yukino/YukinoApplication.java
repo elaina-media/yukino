@@ -38,11 +38,11 @@ public class YukinoApplication {
         log.info("[Yukino] Started");
     }
 
-    public void doScan(String name) throws IOException {
+    public void doScan(String name) throws Exception {
         doScan(yukinoConfigManager, name);
     }
 
-    public void doScan(@NotNull YukinoConfigManager yukinoConfigManager, String name) throws IOException {
+    public void doScan(@NotNull YukinoConfigManager yukinoConfigManager, String name) throws Exception {
         // Do scan and parser
         Config config = yukinoConfigManager.get(name);
         if (config.getParserHandlers().length > 0) {

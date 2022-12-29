@@ -8,6 +8,7 @@ import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
 import net.mikoto.yukino.parser.impl.ModelFileParser;
 import net.mikoto.yukino.parser.impl.JsonFileToObjectParser;
+import net.mikoto.yukino.service.YukinoDataService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -27,37 +28,26 @@ import java.util.Map;
  */
 public class YukinoTestApplication {
     @Test
-    public void applicationTest() throws IOException {
+    public void applicationTest() throws Exception {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        System.out.println(applicationContext);
         YukinoApplication yukinoApplication = (YukinoApplication) applicationContext.getBean("yukinoApplication");
         YukinoConfigManager yukinoConfigManager = yukinoApplication.getYukinoConfigManager();
+        YukinoDataService yukinoDataService = yukinoApplication.getYukinoDataService();
+
         Config config = new Config();
         config.setParserHandlers(
                 new ParserHandler[]{
                         new JsonFileToObjectParser(yukinoApplication.getYukinoJsonManager()),
                         new ModelFileParser(yukinoApplication.getYukinoModelManager())
                 });
+        config.setSqlSessionFactory(
+                new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"))
+        );
         yukinoConfigManager.put("default", config);
         yukinoApplication.doScan("default");
-        System.out.println();
 
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"));
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
-        Map<String, Object> map = new HashMap<>();
-        map.put("tableName", "pixiv.artwork");
-//        List<Map<String, Object>> list = mapper.select(map);
-//        for (Map<String, Object> o :
-//                list) {
-//            JSONObject jsonObject = new JSONObject(o);
-//            System.out.println(jsonObject.toJSONString());
-//        }
         String jsonString = "{\"author_name\":\"SINABI\",\"has_series\":false,\"illust_url_mini\":\"/c/48x48/img-master/img/2022/09/23/00/29/58/101414659_p0_square1200.jpg\",\"like_count\":222,\"pk_artwork_id\":101414659,\"grading\":false,\"create_time\":\"2022-09-22 23:29:58\",\"description\":\"\",\"bookmark_count\":16,\"patch_time\":\"2022-09-25 13:28:08\",\"artwork_title\":\"20220922線画\",\"tags\":\"練習\",\"series_id\":0,\"illust_url_thumb\":\"/c/250x250_80_a2/img-master/img/2022/09/23/00/29/58/101414659_p0_square1200.jpg\",\"illust_url_regular\":\"/img-master/img/2022/09/23/00/29/58/101414659_p0_master1200.jpg\",\"update_time\":\"2022-09-22 23:29:58\",\"series_order\":0,\"previous_artwork_id\":0,\"author_id\":1044676,\"next_artwork_id\":0,\"illust_url_small\":\"/c/540x540_70/img-master/img/2022/09/23/00/29/58/101414659_p0_master1200.jpg\",\"page_count\":1,\"view_count\":0,\"illust_url_original\":\"/img-original/img/2022/09/23/00/29/58/101414659_p0.jpg\"}";
         JSONObject jsonObject = JSONObject.parseObject(jsonString);
-        map.put("columnMap", jsonObject);
-        System.out.println(mapper.insert(map));
-        sqlSession.commit();
-        sqlSession.close();
+        yukinoDataService.insert(jsonObject, "Artwork", "default");
     }
 }
