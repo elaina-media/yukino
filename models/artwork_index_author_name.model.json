@@ -13,7 +13,7 @@
     ["java.lang.String", "illustUrlThumb"]
   ],
   "tableNameStrategy" : {
-    "type": "net.mikoto.yukino.mapper.strategy.impl.StringMd5ModuloStrategy",
+    "type": "net.mikoto.yukino.strategy.impl.StringMd5ModuloStrategy",
     "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
     "values": ["authorName", "artwork_index_%i", 1500]
   }

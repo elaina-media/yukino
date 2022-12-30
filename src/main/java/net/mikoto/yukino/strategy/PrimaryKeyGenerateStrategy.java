@@ -1,4 +1,4 @@
-package net.mikoto.yukino.mapper.strategy;
+package net.mikoto.yukino.strategy;
 
 /**
  * @author mikoto

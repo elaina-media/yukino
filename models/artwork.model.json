@@ -29,7 +29,7 @@
     ["java.lang.String", "previousArtworkTitle"]
   ],
   "tableNameStrategy" : {
-    "type": "net.mikoto.yukino.mapper.strategy.impl.IntegerModuloStrategy",
+    "type": "net.mikoto.yukino.strategy.impl.IntegerModuloStrategy",
     "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
     "values": ["pk_artwork_id", "artwork_%i", 100]
   }

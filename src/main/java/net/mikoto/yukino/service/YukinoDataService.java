@@ -3,7 +3,7 @@ package net.mikoto.yukino.service;
 import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.mapper.YukinoDataMapper;
-import net.mikoto.yukino.mapper.strategy.PrimaryKeyGenerateStrategy;
+import net.mikoto.yukino.strategy.PrimaryKeyGenerateStrategy;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;

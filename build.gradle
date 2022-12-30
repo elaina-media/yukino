@@ -31,7 +31,6 @@ dependencies {
     implementation 'cn.hutool:hutool-all:5.8.8'
 
     // Database
-    implementation 'com.alibaba:druid:1.2.15'
     implementation 'org.mybatis:mybatis:3.5.11'
     implementation 'mysql:mysql-connector-java:8.0.30'
 

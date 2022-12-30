@@ -1,6 +1,6 @@
-package net.mikoto.yukino.mapper.strategy.impl;
+package net.mikoto.yukino.strategy.impl;
 
-import net.mikoto.yukino.mapper.strategy.PrimaryKeyGenerateStrategy;
+import net.mikoto.yukino.strategy.PrimaryKeyGenerateStrategy;
 
 /**
  * @author mikoto

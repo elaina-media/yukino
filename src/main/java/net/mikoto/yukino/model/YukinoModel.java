@@ -3,9 +3,8 @@ package net.mikoto.yukino.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.mikoto.yukino.mapper.strategy.PrimaryKeyGenerateStrategy;
-import net.mikoto.yukino.mapper.strategy.TableNameStrategy;
-import net.mikoto.yukino.model.config.InstantiableObject;
+import net.mikoto.yukino.strategy.PrimaryKeyGenerateStrategy;
+import net.mikoto.yukino.strategy.TableNameStrategy;
 
 @Data
 @AllArgsConstructor
