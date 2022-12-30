@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Change YukinoDataService">
+    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Finish insert">
+      <change afterPath="$PROJECT_DIR$/models/artwork_index_author_name.model.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/artwork_index_tag.model.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/artwork_index_title.model.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/artwork.model.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/artwork.model.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/artwork_index.model.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/JsonObjectParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/JsonObjectParserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/ParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/ParserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/YukinoModelParserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/YukinoModelParserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/impl/ModelFileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/parser/impl/ModelFileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/mybatis-config.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +78,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/projects/elaina/yukino/src/main/java/net/mikoto/yukino/model&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/projects/elaina/yukino/models&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,6 +94,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\projects\elaina\yukino\models" />
       <recent name="F:\projects\elaina\yukino\src\main\java\net\mikoto\yukino\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -166,7 +160,8 @@
       <workItem from="1672275541091" duration="675000" />
       <workItem from="1672300612551" duration="1750000" />
       <workItem from="1672311944158" duration="2170000" />
-      <workItem from="1672320625138" duration="5611000" />
+      <workItem from="1672320625138" duration="7596000" />
+      <workItem from="1672365596188" duration="939000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1670677006779</created>
@@ -217,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672322481724</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[Feat] Finish insert">
+      <created>1672327075359</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672327075359</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +247,8 @@
     <MESSAGE value="[Doc] README.md" />
     <MESSAGE value="[Feat] Add Strategy and do other many things" />
     <MESSAGE value="[Feat] Change YukinoDataService" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Change YukinoDataService" />
+    <MESSAGE value="[Feat] Finish insert" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Finish insert" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
