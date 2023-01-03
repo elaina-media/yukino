@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Update example model json">
+    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Move strategy to net.mikoto.yukino.strategy">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplicationConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/Strategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/PrimaryKeyGenerateStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/PrimaryKeyGenerateStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/TableNameStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/TableNameStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/IntegerModuloStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/IntegerModuloStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/SnowflakePkGenerateStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/SnowflakePkGenerateStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/StringMd5ModuloStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/StringMd5ModuloStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +101,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;89dd46230fa23db9ad987a9e7ad2661f&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d0d1344b545b9b2c170d2e6f8bdf8527&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -107,6 +116,7 @@
       <recent name="F:\projects\elaina\yukino\src\main\java\net\mikoto\yukino\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.mikoto.yukino.manager" />
       <recent name="net.mikoto.yukino.util" />
     </key>
   </component>
@@ -188,7 +198,11 @@
       <workItem from="1672311944158" duration="2170000" />
       <workItem from="1672320625138" duration="7596000" />
       <workItem from="1672365596188" duration="1211000" />
-      <workItem from="1672367789604" duration="3844000" />
+      <workItem from="1672367789604" duration="5019000" />
+      <workItem from="1672405303197" duration="156000" />
+      <workItem from="1672577702950" duration="719000" />
+      <workItem from="1672578466973" duration="2284000" />
+      <workItem from="1672767601631" duration="1421000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1670677006779</created>
@@ -253,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672366757531</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[Feat] Move strategy to net.mikoto.yukino.strategy">
+      <created>1672381830508</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672381830508</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +304,8 @@
     <MESSAGE value="[Feat] Change YukinoDataService" />
     <MESSAGE value="[Feat] Finish insert" />
     <MESSAGE value="[Feat] Update example model json" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Update example model json" />
+    <MESSAGE value="[Feat] Move strategy to net.mikoto.yukino.strategy" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Move strategy to net.mikoto.yukino.strategy" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

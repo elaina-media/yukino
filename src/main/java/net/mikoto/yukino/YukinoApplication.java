@@ -10,9 +10,9 @@ import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
 import net.mikoto.yukino.service.YukinoDataService;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
-import java.io.IOException;
 
 import static net.mikoto.yukino.util.FileUtil.createDir;
 
@@ -26,15 +26,19 @@ import static net.mikoto.yukino.util.FileUtil.createDir;
 @Setter
 public class YukinoApplication {
     private ParserHandler<?, ?> parserHandler;
-    private YukinoConfigManager yukinoConfigManager;
+    private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
     private final YukinoJsonManager yukinoJsonManager;
     private final YukinoDataService yukinoDataService;
-    public YukinoApplication() {
-        this.yukinoModelManager = new YukinoModelManager();
-        this.yukinoJsonManager = new YukinoJsonManager();
-        this.yukinoConfigManager = new YukinoConfigManager();
-        this.yukinoDataService = new YukinoDataService(yukinoConfigManager, yukinoModelManager);
+
+    public YukinoApplication(YukinoModelManager yukinoModelManager,
+                             YukinoJsonManager yukinoJsonManager,
+                             YukinoConfigManager yukinoConfigManager,
+                             YukinoDataService yukinoDataService) {
+        this.yukinoModelManager = yukinoModelManager;
+        this.yukinoJsonManager = yukinoJsonManager;
+        this.yukinoConfigManager = yukinoConfigManager;
+        this.yukinoDataService = yukinoDataService;
         log.info("[Yukino] Started");
     }
 

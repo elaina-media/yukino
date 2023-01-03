@@ -2,7 +2,6 @@ package net.mikoto.yukino.strategy.impl;
 
 import cn.hutool.crypto.SecureUtil;
 import net.mikoto.yukino.strategy.TableNameStrategy;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -27,13 +26,18 @@ public class StringMd5ModuloStrategy implements TableNameStrategy {
     }
 
     @Override
-    public String getTableName(@NotNull Map<String, Object> data) {
-        String md5 = SecureUtil.md5((String) data.get(fieldName));
-        int result = 0;
-        for (char md5Char :
-                md5.toCharArray()) {
-            result += md5Char;
+    public String run(Object... objects) {
+        if (objects[0] instanceof Map<?, ?> map) {
+
+            String md5 = SecureUtil.md5((String) map.get(fieldName));
+            int result = 0;
+            for (char md5Char :
+                    md5.toCharArray()) {
+                result += md5Char;
+            }
+            return resultFormat.replace("%i", String.valueOf(result % divisor));
+        } else {
+            throw new RuntimeException("Unknown type");
         }
-        return resultFormat.replace("%i", String.valueOf(result % divisor));
     }
 }

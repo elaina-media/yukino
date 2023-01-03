@@ -94,7 +94,7 @@ public class SnowflakePkGenerateStrategy implements PrimaryKeyGenerateStrategy<L
     }
 
     @Override
-    public Long generateKey() {
+    public Long run(Object... objects) {
         // 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095)
         long sequenceMask = ~(-1L << sequenceBits);
         long timestamp = timeGen();

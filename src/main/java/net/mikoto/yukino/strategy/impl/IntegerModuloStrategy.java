@@ -1,7 +1,6 @@
 package net.mikoto.yukino.strategy.impl;
 
 import net.mikoto.yukino.strategy.TableNameStrategy;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -27,7 +26,12 @@ public class IntegerModuloStrategy implements TableNameStrategy {
 
 
     @Override
-    public String getTableName(@NotNull Map<String, Object> data) {
-        return resultFormat.replace("%i", String.valueOf(((Integer) data.get(fieldName)) % divisor));
+    public String run(Object... objects) {
+        if (objects[0] instanceof Map<?,?>) {
+            Map<?, ?> map = (Map<?, ?>) objects[0];
+            return resultFormat.replace("%i", String.valueOf(((Integer) map.get(fieldName)) % divisor));
+        } else {
+            throw new RuntimeException("Unknown type.");
+        }
     }
 }

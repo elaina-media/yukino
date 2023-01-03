@@ -1,5 +1,6 @@
 package net.mikoto.yukino.service;
 
+import lombok.extern.log4j.Log4j2;
 import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.mapper.YukinoDataMapper;
@@ -19,19 +20,21 @@ import java.util.Map;
  * @date 2022/12/18
  * Create for yukino
  */
+@Log4j2
 public class YukinoDataService {
     private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
+
     public YukinoDataService(YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
         this.yukinoConfigManager = yukinoConfigManager;
         this.yukinoModelManager = yukinoModelManager;
     }
 
-    private void doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, Map<String, Object> data) {
+    private int doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, Map<String, Object> data) {
         Map<String, Object> map = new HashMap<>();
-        map.put("tableName", yukinoModel.getTableNameStrategy().getTableName(data));
+        map.put("tableName", yukinoModel.getTableNameStrategy().run(data));
         map.put("columnMap", data);
-        mapper.insert(map);
+        return mapper.insert(map);
     }
 
     private void doCheckModel(boolean isCheckModel, @NotNull YukinoModel yukinoModel, @NotNull Map<String, Object> data) {
@@ -40,7 +43,7 @@ public class YukinoDataService {
         if (!data.containsKey(idField.getFieldName())) {
             PrimaryKeyGenerateStrategy<?> pkGenerateStrategy = yukinoModel.getPkGenerateStrategy();
             if (pkGenerateStrategy != null) {
-                data.put(idField.getFieldName(), yukinoModel.getPkGenerateStrategy().generateKey());
+                data.put(idField.getFieldName(), yukinoModel.getPkGenerateStrategy().run());
             }
         }
 
@@ -67,11 +70,13 @@ public class YukinoDataService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
 
-        for (Map<String, Object> singleData :
-                data) {
+        int lines = 0;
+        for (Map<String, Object> singleData : data) {
             doCheckModel(config.isCheckModel(), yukinoModel, singleData);
-            doInsert(yukinoModel, mapper, singleData);
+            lines += doInsert(yukinoModel, mapper, singleData);
         }
+
+        log.info("Do insert to " + lines + " lines");
 
         sqlSession.commit();
         sqlSession.close();
@@ -85,7 +90,9 @@ public class YukinoDataService {
         YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
 
         doCheckModel(config.isCheckModel(), yukinoModel, data);
-        doInsert(yukinoModel, mapper, data);
+        int lines = doInsert(yukinoModel, mapper, data);
+
+        log.info("Do insert to " + lines + " lines");
 
         sqlSession.commit();
         sqlSession.close();
