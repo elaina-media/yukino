@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Move strategy to net.mikoto.yukino.strategy">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplicationConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/Strategy.java" afterDir="false" />
+    <list default="true" id="7dfdeb75-1cb3-4051-b437-46f6f754810e" name="变更" comment="[Feat] Add spring-bean and spring-core">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/service/YukinoDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/PrimaryKeyGenerateStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/PrimaryKeyGenerateStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/TableNameStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/TableNameStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/IntegerModuloStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/IntegerModuloStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/SnowflakePkGenerateStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/SnowflakePkGenerateStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/StringMd5ModuloStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/strategy/impl/StringMd5ModuloStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mikoto.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/YukinoApplicationConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/manager/AbstractManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mikoto/yukino/manager/AbstractManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/spring.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,27 +79,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;jbr-17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/projects/elaina/yukino/models&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;d0d1344b545b9b2c170d2e6f8bdf8527&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "jbr-17",
+    "last_opened_file_path": "F:/projects/elaina/yukino/models",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "d0d1344b545b9b2c170d2e6f8bdf8527",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\projects\elaina\yukino\models" />
@@ -120,7 +116,7 @@
       <recent name="net.mikoto.yukino.util" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.yukino [publishToMavenLocal]">
+  <component name="RunManager" selected="Gradle.YukinoTestApplication.parserTest">
     <configuration name="YukinoTestApplication.applicationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -135,6 +131,29 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;net.mikoto.yukino.test.YukinoTestApplication.applicationTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="YukinoTestApplication.parserTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;net.mikoto.yukino.test.YukinoTestApplication.parserTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -167,6 +186,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.YukinoTestApplication.parserTest" />
         <item itemvalue="Gradle.yukino [publishToMavenLocal]" />
         <item itemvalue="Gradle.YukinoTestApplication.applicationTest" />
       </list>
@@ -202,7 +222,7 @@
       <workItem from="1672405303197" duration="156000" />
       <workItem from="1672577702950" duration="719000" />
       <workItem from="1672578466973" duration="2284000" />
-      <workItem from="1672767601631" duration="1421000" />
+      <workItem from="1672767601631" duration="3197000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <created>1670677006779</created>
@@ -274,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672381830508</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[Feat] Add spring-bean and spring-core">
+      <created>1672769071629</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1672769071629</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +332,19 @@
     <MESSAGE value="[Feat] Finish insert" />
     <MESSAGE value="[Feat] Update example model json" />
     <MESSAGE value="[Feat] Move strategy to net.mikoto.yukino.strategy" />
-    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Move strategy to net.mikoto.yukino.strategy" />
+    <MESSAGE value="[Feat] Add spring-bean and spring-core" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Feat] Add spring-bean and spring-core" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/net/mikoto/yukino/test/YukinoTestApplication.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

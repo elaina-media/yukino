@@ -1,7 +1,9 @@
 package net.mikoto.yukino.manager;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author mikoto
@@ -18,5 +20,25 @@ public abstract class AbstractManager<T> {
 
     public void put(String name, T object) {
         dataMap.put(name, object);
+    }
+
+    public Set<Map.Entry<String,T>> getAll() {
+        return dataMap.entrySet();
+    }
+
+    public Collection<T> getAllValues() {
+        return dataMap.values();
+    }
+
+    public Set<String> getAllKeys() {
+        return dataMap.keySet();
+    }
+
+    public int size() {
+        return dataMap.size();
+    }
+
+    public boolean isEmpty() {
+        return dataMap.isEmpty();
     }
 }

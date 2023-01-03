@@ -2,7 +2,10 @@ package net.mikoto.yukino.test;
 
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.YukinoApplication;
+import net.mikoto.yukino.YukinoApplicationConfiguration;
 import net.mikoto.yukino.manager.YukinoConfigManager;
+import net.mikoto.yukino.manager.YukinoJsonManager;
+import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.mapper.YukinoDataMapper;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
@@ -13,8 +16,11 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -26,14 +32,23 @@ import java.util.Map;
  * @date 2022/12/11
  * Create for yukino
  */
+@SuppressWarnings("NewClassNamingConvention")
 public class YukinoTestApplication {
-    @Test
-    public void applicationTest() throws Exception {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-        YukinoApplication yukinoApplication = (YukinoApplication) applicationContext.getBean("yukinoApplication");
-        YukinoConfigManager yukinoConfigManager = yukinoApplication.getYukinoConfigManager();
-        YukinoDataService yukinoDataService = yukinoApplication.getYukinoDataService();
+    private static final ApplicationContext applicationContext =
+            new AnnotationConfigApplicationContext(YukinoApplicationConfiguration.class);
+    private static final YukinoApplication yukinoApplication = applicationContext.getBean(YukinoApplication.class);
 
+    // init config
+    static {
+        try {
+            yukinoApplication.getYukinoConfigManager().put("default", getConfig());
+            yukinoApplication.doScan("default");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static @NotNull Config getConfig() throws IOException {
         Config config = new Config();
         config.setParserHandlers(
                 new ParserHandler[]{
@@ -43,11 +58,25 @@ public class YukinoTestApplication {
         config.setSqlSessionFactory(
                 new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"))
         );
-        yukinoConfigManager.put("default", config);
-        yukinoApplication.doScan("default");
+        return config;
+    }
 
-        String jsonString = "{\"author_name\":\"SINABI\",\"has_series\":false,\"illust_url_mini\":\"/c/48x48/img-master/img/2022/09/23/00/29/58/101414659_p0_square1200.jpg\",\"like_count\":222,\"pk_artwork_id\":101414659,\"grading\":false,\"create_time\":\"2022-09-22 23:29:58\",\"description\":\"\",\"bookmark_count\":16,\"patch_time\":\"2022-09-25 13:28:08\",\"artwork_title\":\"20220922線画\",\"tags\":\"練習\",\"series_id\":0,\"illust_url_thumb\":\"/c/250x250_80_a2/img-master/img/2022/09/23/00/29/58/101414659_p0_square1200.jpg\",\"illust_url_regular\":\"/img-master/img/2022/09/23/00/29/58/101414659_p0_master1200.jpg\",\"update_time\":\"2022-09-22 23:29:58\",\"series_order\":0,\"previous_artwork_id\":0,\"author_id\":1044676,\"next_artwork_id\":0,\"illust_url_small\":\"/c/540x540_70/img-master/img/2022/09/23/00/29/58/101414659_p0_master1200.jpg\",\"page_count\":1,\"view_count\":0,\"illust_url_original\":\"/img-original/img/2022/09/23/00/29/58/101414659_p0.jpg\"}";
-        JSONObject jsonObject = JSONObject.parseObject(jsonString);
-        yukinoDataService.insert(jsonObject, "Artwork", "default");
+    @Test
+    public void parserTest() {
+        YukinoJsonManager yukinoJsonManager = yukinoApplication.getYukinoJsonManager();
+        YukinoModelManager yukinoModelManager = yukinoApplication.getYukinoModelManager();
+
+        Assertions.assertEquals(5, yukinoJsonManager.size());
+        Assertions.assertNotNull(yukinoJsonManager.get("test.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_author_name.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_tag.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_title.model.json"));
+
+        Assertions.assertEquals(4, yukinoModelManager.size());
+        Assertions.assertNotNull(yukinoModelManager.get("Artwork"));
+        Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_author_name"));
+        Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_tag"));
+        Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_title"));
     }
 }

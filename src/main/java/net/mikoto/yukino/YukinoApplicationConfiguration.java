@@ -4,7 +4,6 @@ import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.service.YukinoDataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,9 +30,16 @@ public class YukinoApplicationConfiguration {
     }
 
     @Bean
-    @Autowired
     public YukinoDataService yukinoDataService(YukinoConfigManager yukinoConfigManager,
                                                YukinoModelManager yukinoModelManager) {
         return new YukinoDataService(yukinoConfigManager, yukinoModelManager);
+    }
+
+    @Bean
+    public YukinoApplication yukinoApplication(YukinoModelManager yukinoModelManager,
+                                               YukinoJsonManager yukinoJsonManager,
+                                               YukinoConfigManager yukinoConfigManager,
+                                               YukinoDataService yukinoDataService) {
+        return new YukinoApplication(yukinoModelManager, yukinoJsonManager, yukinoConfigManager, yukinoDataService);
     }
 }
