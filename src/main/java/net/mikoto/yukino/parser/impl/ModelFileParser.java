@@ -29,7 +29,7 @@ public class ModelFileParser extends YukinoModelParserHandler {
 
     @Override
     protected YukinoModel doParse(@NotNull File target) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        if (target.getName().endsWith(".model.json")) {
+        if (target.getName().endsWith(".yukino.model.json")) {
             JSONObject rawModel = JSON.parseObject(new FileInputStream(target));
             YukinoModel yukinoModel;
 
@@ -52,9 +52,10 @@ public class ModelFileParser extends YukinoModelParserHandler {
 
                 InstantiableObject primaryKeyGenerateStrategyObj = rawModel.getObject("primaryKeyGenerateStrategy", InstantiableObject.class);
 
+                PrimaryKeyGenerateStrategy<?> primaryKeyGenerateStrategy = null;
                 if (primaryKeyGenerateStrategyObj != null) {
                     // Instance the primaryKeyGenerateStrategy
-                    PrimaryKeyGenerateStrategy<?> primaryKeyGenerateStrategy =
+                    primaryKeyGenerateStrategy =
                             (PrimaryKeyGenerateStrategy<?>) InstantiableObject.instance(primaryKeyGenerateStrategyObj);
                 }
 
@@ -65,6 +66,7 @@ public class ModelFileParser extends YukinoModelParserHandler {
                 yukinoModel = rawModel.to(YukinoModel.class);
                 yukinoModel.setFields(fieldsResult);
                 yukinoModel.setTableNameStrategy(tableNameStrategy);
+                yukinoModel.setPkGenerateStrategy(primaryKeyGenerateStrategy);
 
 
                 return yukinoModel;
