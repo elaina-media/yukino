@@ -1,14 +1,13 @@
 package net.mikoto.yukino.manager;
 
 import net.mikoto.yukino.model.YukinoModel;
-import org.springframework.stereotype.Component;
 
 /**
  * @author mikoto
  * @date 2022/12/11
  * Create for yukino
  */
-public class YukinoModelManager extends AbstractManager<YukinoModel> {
+public class YukinoModelManager extends RegistrableManager<YukinoModel> {
     public void register(YukinoModel yukinoModel) {
         super.put(yukinoModel.getModelName(), yukinoModel);
     }
