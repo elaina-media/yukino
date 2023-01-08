@@ -68,10 +68,10 @@ public class YukinoTestApplication {
 
         Assertions.assertEquals(5, yukinoJsonManager.size());
         Assertions.assertNotNull(yukinoJsonManager.get("test.json"));
-        Assertions.assertNotNull(yukinoJsonManager.get("artwork.model.json"));
-        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_author_name.model.json"));
-        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_tag.model.json"));
-        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_title.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork.yukino.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_author_name.yukino.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_tag.yukino.model.json"));
+        Assertions.assertNotNull(yukinoJsonManager.get("artwork_index_title.yukino.model.json"));
 
         Assertions.assertEquals(4, yukinoModelManager.size());
         Assertions.assertNotNull(yukinoModelManager.get("Artwork"));
