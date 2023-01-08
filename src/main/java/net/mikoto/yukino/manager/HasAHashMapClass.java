@@ -10,7 +10,7 @@ import java.util.Set;
  * @date 2022/12/11
  * Create for yukino
  */
-public abstract class RegistrableManager<T> {
+public abstract class HasAHashMapClass<T> {
 
     protected final Map<String, T> dataMap = new HashMap<>();
 

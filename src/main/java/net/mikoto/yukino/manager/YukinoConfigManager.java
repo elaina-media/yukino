@@ -7,5 +7,5 @@ import net.mikoto.yukino.model.Config;
  * @date 2022/12/18
  * Create for yukino
  */
-public class YukinoConfigManager extends RegistrableManager<Config> {
+public class YukinoConfigManager extends HasAHashMapClass<Config> {
 }

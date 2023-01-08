@@ -7,7 +7,7 @@ import net.mikoto.yukino.model.YukinoModel;
  * @date 2022/12/11
  * Create for yukino
  */
-public class YukinoModelManager extends RegistrableManager<YukinoModel> {
+public class YukinoModelManager extends HasAHashMapClass<YukinoModel> {
     public void register(YukinoModel yukinoModel) {
         super.put(yukinoModel.getModelName(), yukinoModel);
     }
