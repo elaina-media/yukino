@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * @author mikoto
- * @date 2022/1/2 1:33
+ * &#064;date 2022/1/2 1:33
  */
 public final class FileUtil {
     /**

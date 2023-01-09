@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * @author mikoto
- * @date 2022/12/11
+ * &#064;date 2022/12/11
  * Create for yukino
  */
 public abstract class HasAHashMapClass<T> {

@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * @author mikoto
- * @date 2022/12/24
+ * &#064;date 2022/12/24
  * Create for yukino
  */
 public class IntegerModuloStrategy implements TableNameStrategy {

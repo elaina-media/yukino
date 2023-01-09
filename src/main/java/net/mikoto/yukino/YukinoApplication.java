@@ -17,7 +17,7 @@ import static net.mikoto.yukino.util.FileUtil.createDir;
 
 /**
  * @author mikoto
- * @date 2022/12/11
+ * &#064;date 2022/12/11
  * Create for yukino
  */
 @Log4j2

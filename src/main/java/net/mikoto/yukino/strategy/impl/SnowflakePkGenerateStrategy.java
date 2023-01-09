@@ -4,7 +4,7 @@ import net.mikoto.yukino.strategy.PrimaryKeyGenerateStrategy;
 
 /**
  * @author mikoto
- * @date 2022/12/25
+ * &#064;date 2022/12/25
  * Create for yukino
  */
 public class SnowflakePkGenerateStrategy implements PrimaryKeyGenerateStrategy<Long> {

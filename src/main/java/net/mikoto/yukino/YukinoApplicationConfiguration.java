@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author mikoto
- * @date 2023/1/4
+ * &#064;date 2023/1/4
  * Create for yukino
  */
 @Configuration
