@@ -11,8 +11,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
  */
 @Data
 public class Config {
-    ParserHandler<?, ?>[] parserHandlers;
-    String modelsPath = "/models";
-    boolean isCheckModel = false;
-    SqlSessionFactory sqlSessionFactory;
+    private ParserHandler<?, ?>[] parserHandlers;
+    private String modelsPath = "/models";
+    private boolean isCheckModel = false;
+    private SqlSessionFactory sqlSessionFactory;
 }

@@ -21,11 +21,11 @@ import java.util.Map;
  * Create for yukino
  */
 @Log4j2
-public class YukinoDataService {
+public class YukinoDaoService {
     private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
 
-    public YukinoDataService(YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
+    public YukinoDaoService(YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
         this.yukinoConfigManager = yukinoConfigManager;
         this.yukinoModelManager = yukinoModelManager;
     }

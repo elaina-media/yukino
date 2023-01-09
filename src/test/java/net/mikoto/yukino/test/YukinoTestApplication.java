@@ -1,31 +1,22 @@
 package net.mikoto.yukino.test;
 
-import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.YukinoApplication;
 import net.mikoto.yukino.YukinoApplicationConfiguration;
-import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
-import net.mikoto.yukino.mapper.YukinoDataMapper;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
 import net.mikoto.yukino.parser.impl.ModelFileParser;
 import net.mikoto.yukino.parser.impl.JsonFileToObjectParser;
-import net.mikoto.yukino.service.YukinoDataService;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author mikoto

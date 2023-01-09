@@ -8,9 +8,8 @@ import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandler;
-import net.mikoto.yukino.service.YukinoDataService;
+import net.mikoto.yukino.service.YukinoDaoService;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 
@@ -29,16 +28,16 @@ public class YukinoApplication {
     private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
     private final YukinoJsonManager yukinoJsonManager;
-    private final YukinoDataService yukinoDataService;
+    private final YukinoDaoService yukinoDaoService;
 
     public YukinoApplication(YukinoModelManager yukinoModelManager,
                              YukinoJsonManager yukinoJsonManager,
                              YukinoConfigManager yukinoConfigManager,
-                             YukinoDataService yukinoDataService) {
+                             YukinoDaoService yukinoDaoService) {
         this.yukinoModelManager = yukinoModelManager;
         this.yukinoJsonManager = yukinoJsonManager;
         this.yukinoConfigManager = yukinoConfigManager;
-        this.yukinoDataService = yukinoDataService;
+        this.yukinoDaoService = yukinoDaoService;
         log.info("[Yukino] Started");
     }
 
