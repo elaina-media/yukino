@@ -21,6 +21,9 @@ public class JsonFileToObjectParser extends JsonObjectParserHandler {
 
     @Override
     protected JSONObject doParse(File target) throws IOException {
-        return JSON.parseObject(new FileInputStream(target));
+        if (target.getName().endsWith(".json")) {
+            return JSON.parseObject(new FileInputStream(target));
+        }
+        return null;
     }
 }
