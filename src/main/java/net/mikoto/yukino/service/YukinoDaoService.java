@@ -42,7 +42,7 @@ public class YukinoDaoService {
      * @param yukinoModel The yukino model (Mainly use the strategy in it)
      * @param mapper The instance mapper of YukinoDataMapper
      * @param data The real data
-     * @return The lines it affect.
+     * @return The lines it affects.
      */
     private int doInsert(@NotNull YukinoModel yukinoModel, @NotNull YukinoDataMapper mapper, Map<String, Object> data) {
         Map<String, Object> map = new HashMap<>();
@@ -55,7 +55,7 @@ public class YukinoDaoService {
      * Check the data is compare to the model
      * Do something important to the data (e.g. Insert primary key)
      *
-     * @param isCheckModel If it is need to check every colum of the model.
+     * @param isCheckModel If it is needed to check every colum of the model.
      * @param yukinoModel The yukino model
      * @param data The real data
      */
