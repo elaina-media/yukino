@@ -1,5 +1,6 @@
 package net.mikoto.yukino.parser;
 
+import net.mikoto.yukino.observer.Observable;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.lang.reflect.InvocationTargetException;
  * &#064;date 2022/12/11
  * Create for yukino
  */
-public abstract class ParserHandler<T, R> {
+public abstract class ParserHandler<T, R> extends Observable {
     private ParserHandler<?, ?> next;
 
     public ParserHandler<?, ?> setNext(ParserHandler<?, ?> next) {
