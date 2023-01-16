@@ -1,9 +1,9 @@
-package net.mikoto.yukino.parser.handle.impl;
+package net.mikoto.yukino.parser.handler.impl;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.manager.YukinoJsonManager;
-import net.mikoto.yukino.parser.handle.JsonObjectParserHandler;
+import net.mikoto.yukino.parser.handler.JsonObjectParserHandler;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,8 +14,8 @@ import java.io.IOException;
  * &#064;date 2022/12/11
  * Create for yukino
  */
-public class JsonFileToObjectParser extends JsonObjectParserHandler {
-    public JsonFileToObjectParser(YukinoJsonManager yukinoJsonManager) {
+public class JsonFileToObjectParserHandler extends JsonObjectParserHandler {
+    public JsonFileToObjectParserHandler(YukinoJsonManager yukinoJsonManager) {
         super(yukinoJsonManager);
     }
 

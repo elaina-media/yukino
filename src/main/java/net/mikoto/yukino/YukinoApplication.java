@@ -7,7 +7,7 @@ import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.Config;
-import net.mikoto.yukino.parser.ParserHandler;
+import net.mikoto.yukino.parser.ParserHandle;
 import net.mikoto.yukino.service.YukinoDaoService;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +24,7 @@ import static net.mikoto.yukino.util.FileUtil.createDir;
 @Getter
 @Setter
 public class YukinoApplication {
-    private ParserHandler<?, ?> parserHandler;
+    private ParserHandle<?, ?> parserHandle;
     private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
     private final YukinoJsonManager yukinoJsonManager;
@@ -48,11 +48,11 @@ public class YukinoApplication {
     public void doScan(@NotNull YukinoConfigManager yukinoConfigManager, String name) throws Exception {
         // Do scan and parser
         Config config = yukinoConfigManager.get(name);
-        if (config.getParserHandlers().length > 0) {
-            parserHandler = config.getParserHandlers()[0];
-            ParserHandler<?, ?> lastHandler = parserHandler;
-            for (int i = 1; i < config.getParserHandlers().length; i++) {
-                lastHandler = lastHandler.setNext(config.getParserHandlers()[i]);
+        if (config.getParserHandles().length > 0) {
+            parserHandle = config.getParserHandles()[0];
+            ParserHandle<?, ?> lastHandler = parserHandle;
+            for (int i = 1; i < config.getParserHandles().length; i++) {
+                lastHandler = lastHandler.setNext(config.getParserHandles()[i]);
             }
 
             // To make sure the dir is existed.
@@ -63,7 +63,7 @@ public class YukinoApplication {
             if (modelFiles != null && modelFiles.length > 0) {
                 for (File file :
                         modelFiles) {
-                    parserHandler.parserHandle(file);
+                    parserHandle.parserHandle(file);
                 }
             } else {
                 log.warn("[Yukino] No file was found");

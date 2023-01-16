@@ -1,4 +1,4 @@
-package net.mikoto.yukino.parser.handle.impl;
+package net.mikoto.yukino.parser.handler.impl;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
@@ -9,7 +9,7 @@ import net.mikoto.yukino.strategy.TableNameStrategy;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;
 import net.mikoto.yukino.model.config.InstantiableObject;
-import net.mikoto.yukino.parser.handle.YukinoModelParserHandler;
+import net.mikoto.yukino.parser.handler.YukinoModelParserHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -22,8 +22,8 @@ import java.lang.reflect.InvocationTargetException;
  * &#064;date 2022/12/11
  * Create for yukino
  */
-public class ModelFileParser extends YukinoModelParserHandler {
-    public ModelFileParser(YukinoModelManager yukinoModelManager) {
+public class ModelFileParserHandler extends YukinoModelParserHandler {
+    public ModelFileParserHandler(YukinoModelManager yukinoModelManager) {
         super(yukinoModelManager);
     }
 

@@ -10,10 +10,10 @@ import java.lang.reflect.InvocationTargetException;
  * &#064;date 2022/12/11
  * Create for yukino
  */
-public abstract class ParserHandler<T, R> {
-    private ParserHandler<?, ?> next;
+public abstract class ParserHandle<T, R> {
+    private ParserHandle<?, ?> next;
 
-    public ParserHandler<?, ?> setNext(ParserHandler<?, ?> next) {
+    public ParserHandle<?, ?> setNext(ParserHandle<?, ?> next) {
         this.next = next;
         return next;
     }

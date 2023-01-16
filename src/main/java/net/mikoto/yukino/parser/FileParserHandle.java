@@ -11,7 +11,7 @@ import java.io.File;
  * Create for yukino
  */
 @Log4j2
-public abstract class FileParserHandler<R> extends ParserHandler<File, R> {
+public abstract class FileParserHandle<R> extends ParserHandle<File, R> {
     @Override
     protected void parsed(@NotNull Object target) {
         log.info("[Yukino] Parsed file -> " + ((File) target).getName());

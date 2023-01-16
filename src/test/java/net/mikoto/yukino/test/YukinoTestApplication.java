@@ -5,9 +5,9 @@ import net.mikoto.yukino.YukinoApplicationConfiguration;
 import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.Config;
-import net.mikoto.yukino.parser.ParserHandler;
-import net.mikoto.yukino.parser.handle.impl.ModelFileParser;
-import net.mikoto.yukino.parser.handle.impl.JsonFileToObjectParser;
+import net.mikoto.yukino.parser.ParserHandle;
+import net.mikoto.yukino.parser.handler.impl.ModelFileParserHandler;
+import net.mikoto.yukino.parser.handler.impl.JsonFileToObjectParserHandler;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -41,10 +41,10 @@ public class YukinoTestApplication {
 
     private static @NotNull Config getConfig() throws IOException {
         Config config = new Config();
-        config.setParserHandlers(
-                new ParserHandler[]{
-                        new JsonFileToObjectParser(yukinoApplication.getYukinoJsonManager()),
-                        new ModelFileParser(yukinoApplication.getYukinoModelManager())
+        config.setParserHandles(
+                new ParserHandle[]{
+                        new JsonFileToObjectParserHandler(yukinoApplication.getYukinoJsonManager()),
+                        new ModelFileParserHandler(yukinoApplication.getYukinoModelManager())
                 });
         config.setSqlSessionFactory(
                 new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"))
