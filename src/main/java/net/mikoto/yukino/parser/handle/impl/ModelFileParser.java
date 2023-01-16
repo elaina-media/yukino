@@ -1,4 +1,4 @@
-package net.mikoto.yukino.parser.impl;
+package net.mikoto.yukino.parser.handle.impl;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONArray;
@@ -9,7 +9,7 @@ import net.mikoto.yukino.strategy.TableNameStrategy;
 import net.mikoto.yukino.model.Field;
 import net.mikoto.yukino.model.YukinoModel;
 import net.mikoto.yukino.model.config.InstantiableObject;
-import net.mikoto.yukino.parser.YukinoModelParserHandler;
+import net.mikoto.yukino.parser.handle.YukinoModelParserHandler;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;

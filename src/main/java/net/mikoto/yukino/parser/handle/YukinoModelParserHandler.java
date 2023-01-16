@@ -1,7 +1,8 @@
-package net.mikoto.yukino.parser;
+package net.mikoto.yukino.parser.handle;
 
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.model.YukinoModel;
+import net.mikoto.yukino.parser.FileParserHandler;
 
 import java.io.File;
 import java.io.IOException;

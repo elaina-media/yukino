@@ -1,9 +1,9 @@
-package net.mikoto.yukino.parser.impl;
+package net.mikoto.yukino.parser.handle.impl;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.manager.YukinoJsonManager;
-import net.mikoto.yukino.parser.JsonObjectParserHandler;
+import net.mikoto.yukino.parser.handle.JsonObjectParserHandler;
 
 import java.io.File;
 import java.io.FileInputStream;

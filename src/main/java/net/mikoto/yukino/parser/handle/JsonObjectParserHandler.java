@@ -1,7 +1,8 @@
-package net.mikoto.yukino.parser;
+package net.mikoto.yukino.parser.handle;
 
 import com.alibaba.fastjson2.JSONObject;
 import net.mikoto.yukino.manager.YukinoJsonManager;
+import net.mikoto.yukino.parser.FileParserHandler;
 
 import java.io.File;
 import java.io.IOException;
