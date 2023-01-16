@@ -22,9 +22,7 @@ public abstract class HasAnArrayListClass<T> {
         arrayList.add(index, object);
     }
 
-    public T[] getAll() {
-        return (T[]) arrayList.toArray();
+    public Object[] getAll() {
+        return arrayList.toArray();
     }
-
-
 }
