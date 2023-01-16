@@ -1,4 +1,4 @@
-package net.mikoto.yukino.manager;
+package net.mikoto.yukino.model;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,6 +20,10 @@ public abstract class HasAHashMapClass<T> {
 
     public void put(String name, T object) {
         dataMap.put(name, object);
+    }
+
+    public void remove(String name) {
+        dataMap.remove(name);
     }
 
     public Set<Map.Entry<String,T>> getAll() {

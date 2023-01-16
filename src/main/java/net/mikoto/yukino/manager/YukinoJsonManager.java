@@ -1,6 +1,7 @@
 package net.mikoto.yukino.manager;
 
 import com.alibaba.fastjson2.JSONObject;
+import net.mikoto.yukino.model.HasAHashMapClass;
 
 /**
  * @author mikoto

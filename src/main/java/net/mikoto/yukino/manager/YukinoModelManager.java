@@ -1,5 +1,6 @@
 package net.mikoto.yukino.manager;
 
+import net.mikoto.yukino.model.HasAHashMapClass;
 import net.mikoto.yukino.model.YukinoModel;
 
 /**
