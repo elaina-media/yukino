@@ -1,0 +1,13 @@
+{
+  "modelName": "author",
+  "fields": [
+    ["java.lang.Integer", "authorGlobalId"],
+    ["java.lang.String", "authorName"],
+    ["java.lang.String", "profile"]
+  ],
+  "tableNameStrategy" : {
+    "type": "net.mikoto.yukino.strategy.impl.LongModuloStrategy",
+    "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
+    "values": ["authorGlobalId", "author_%i", 50]
+  }
+}

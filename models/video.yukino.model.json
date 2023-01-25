@@ -1,0 +1,39 @@
+{
+  "modelName": "video",
+  "fields": [
+    ["java.lang.Long", "artworkGlobalId"],
+    ["java.lang.String", "title"],
+    ["java.lang.String", "description"],
+    ["java.lang.String", "urlSmall"],
+    ["java.lang.Integer", "uploaderGlobalId"],
+    ["java.lang.String", "uploaderName"],
+    ["java.lang.String", "uploaderAvatar"],
+    ["java.lang.Integer", "authorGlobalId"],
+    ["java.lang.String", "authorName"],
+    ["java.lang.String", "authorAvatar"],
+    ["java.lang.String", "format"],
+    ["java.lang.Integer", "wide"],
+    ["java.lang.Integer", "height"],
+    ["java.lang.Integer", "bitRate"],
+    ["java.lang.Integer", "fps"],
+    ["java.lang.Integer", "bookmarkCount"],
+    ["java.lang.Integer", "likeCount"],
+    ["java.lang.Integer", "viewCount"],
+    ["java.lang.Integer", "grading"],
+    ["java.lang.String", "tags"],
+    ["java.util.Date", "createTime"],
+    ["java.util.Date", "updateTime"],
+    ["java.lang.Boolean", "isCollected"],
+    ["java.lang.Integer", "collectionGlobalId"],
+    ["java.lang.Integer", "collectionOrder"],
+    ["java.lang.Integer", "nextArtworkGlobalId"],
+    ["java.lang.String", "nextTitle"],
+    ["java.lang.Integer", "previousArtworkGlobalId"],
+    ["java.lang.String", "previousTitle"]
+  ],
+  "tableNameStrategy" : {
+    "type": "net.mikoto.yukino.strategy.impl.LongModuloStrategy",
+    "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
+    "values": ["artworkGlobalId", "video_%i", 100]
+  }
+}

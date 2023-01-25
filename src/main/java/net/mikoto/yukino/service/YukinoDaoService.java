@@ -13,6 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,7 +27,7 @@ public class YukinoDaoService {
     private final YukinoModelManager yukinoModelManager;
 
     /**
-     * The constructor of YukinoDaoService
+     * YukinoDaoService constructor
      *
      * @param yukinoConfigManager net.mikoto.yukino.manager.YukinoConfigManager
      * @param yukinoModelManager net.mikoto.yukino.manager.YukinoModelManager
@@ -85,6 +86,20 @@ public class YukinoDaoService {
         }
     }
 
+    private List<Map<String, Object>> doSearch(String sql, YukinoDataMapper yukinoDataMapper) {
+        Map<String, Object> paramsMap = new HashMap<>();
+        paramsMap.put("sql", sql);
+
+        return yukinoDataMapper.select(paramsMap);
+    }
+
+    /**
+     * Insert multi data
+     *
+     * @param data The data you need to insert(key: The name of the column, value: the real data object)
+     * @param modelName The name of the model
+     * @param configName The name of the config
+     */
     public void insert(Map<String, Object> @NotNull [] data, String modelName, String configName) {
         Config config = yukinoConfigManager.get(configName);
         YukinoModel yukinoModel = yukinoModelManager.get(modelName);
@@ -98,7 +113,7 @@ public class YukinoDaoService {
             lines += doInsert(yukinoModel, mapper, singleData);
         }
 
-        log.info("Do insert to " + lines + " lines");
+        log.info("[Yukino] Do insert to " + lines + " lines");
 
         sqlSession.commit();
         sqlSession.close();
@@ -118,5 +133,18 @@ public class YukinoDaoService {
 
         sqlSession.commit();
         sqlSession.close();
+    }
+
+    public List<Map<String, Object>> search(String configName, String sql) {
+        Config config = yukinoConfigManager.get(configName);
+        SqlSessionFactory sqlSessionFactory = config.getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        YukinoDataMapper mapper = sqlSession.getMapper(YukinoDataMapper.class);
+
+        List<Map<String, Object>> result = doSearch(sql, mapper);
+
+        sqlSession.close();
+
+        return result;
     }
 }

@@ -8,6 +8,7 @@ import net.mikoto.yukino.model.Config;
 import net.mikoto.yukino.parser.ParserHandle;
 import net.mikoto.yukino.parser.handler.impl.ModelFileParserHandler;
 import net.mikoto.yukino.parser.handler.impl.JsonFileToObjectParserHandler;
+import net.mikoto.yukino.service.YukinoDaoService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -69,5 +70,12 @@ public class YukinoTestApplication {
         Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_author_name"));
         Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_tag"));
         Assertions.assertNotNull(yukinoModelManager.get("Artwork_Index_title"));
+    }
+
+    @Test
+    public void searchTest() {
+        YukinoDaoService yukinoDaoService = yukinoApplication.getYukinoDaoService();
+
+        yukinoDaoService.search("default", "select ");
     }
 }
