@@ -1,6 +1,7 @@
 package net.mikoto.yukino.service;
 
 import lombok.extern.log4j.Log4j2;
+import net.mikoto.yukino.YukinoProperties;
 import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
 import net.mikoto.yukino.mapper.YukinoDataMapper;
@@ -23,6 +24,7 @@ import java.util.Map;
  */
 @Log4j2
 public class YukinoDaoService {
+    private final YukinoProperties yukinoProperties;
     private final YukinoConfigManager yukinoConfigManager;
     private final YukinoModelManager yukinoModelManager;
 
@@ -32,7 +34,8 @@ public class YukinoDaoService {
      * @param yukinoConfigManager net.mikoto.yukino.manager.YukinoConfigManager
      * @param yukinoModelManager net.mikoto.yukino.manager.YukinoModelManager
      */
-    public YukinoDaoService(YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
+    public YukinoDaoService(YukinoProperties yukinoProperties, YukinoConfigManager yukinoConfigManager, YukinoModelManager yukinoModelManager) {
+         this.yukinoProperties = yukinoProperties;
         this.yukinoConfigManager = yukinoConfigManager;
         this.yukinoModelManager = yukinoModelManager;
     }
@@ -93,6 +96,10 @@ public class YukinoDaoService {
         return yukinoDataMapper.select(paramsMap);
     }
 
+    public void insert(Map<String, Object> @NotNull [] data, String modelName) {
+        insert(data, modelName, yukinoProperties.getConfigName());
+    }
+
     /**
      * Insert multi data
      *
@@ -119,6 +126,10 @@ public class YukinoDaoService {
         sqlSession.close();
     }
 
+    public void insert(Map<String, Object> data, String modelName) {
+        insert(data, modelName, yukinoProperties.getConfigName());
+    }
+
     public void insert(Map<String, Object> data, String modelName, String configName) {
         Config config = yukinoConfigManager.get(configName);
         YukinoModel yukinoModel = yukinoModelManager.get(modelName);
@@ -135,7 +146,11 @@ public class YukinoDaoService {
         sqlSession.close();
     }
 
-    public List<Map<String, Object>> search(String configName, String sql) {
+    public List<Map<String, Object>> search(String sql) {
+        return search(sql, yukinoProperties.getConfigName());
+    }
+
+    public List<Map<String, Object>> search(String sql, String configName) {
         Config config = yukinoConfigManager.get(configName);
         SqlSessionFactory sqlSessionFactory = config.getSqlSessionFactory();
         SqlSession sqlSession = sqlSessionFactory.openSession();

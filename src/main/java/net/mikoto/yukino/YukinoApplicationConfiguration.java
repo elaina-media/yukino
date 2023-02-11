@@ -3,9 +3,19 @@ package net.mikoto.yukino;
 import net.mikoto.yukino.manager.YukinoConfigManager;
 import net.mikoto.yukino.manager.YukinoJsonManager;
 import net.mikoto.yukino.manager.YukinoModelManager;
+import net.mikoto.yukino.model.Config;
+import net.mikoto.yukino.parser.ParserHandle;
+import net.mikoto.yukino.parser.handler.impl.JsonFileToObjectParserHandler;
+import net.mikoto.yukino.parser.handler.impl.ModelFileParserHandler;
 import net.mikoto.yukino.service.YukinoDaoService;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
 
 /**
  * @author mikoto
@@ -13,7 +23,31 @@ import org.springframework.context.annotation.Configuration;
  * Create for yukino
  */
 @Configuration
+@EnableConfigurationProperties({YukinoProperties.class})
 public class YukinoApplicationConfiguration {
+    /**
+     * Create a default config
+     *
+     * @param yukinoJsonManager The yukino json manager
+     * @param yukinoModelManager The yukino model manager
+     * @return The config object
+     */
+    private static @NotNull Config getConfig(YukinoJsonManager yukinoJsonManager, YukinoModelManager yukinoModelManager) {
+        Config config = new Config();
+        config.setParserHandles(
+                new ParserHandle[]{
+                        new JsonFileToObjectParserHandler(yukinoJsonManager),
+                        new ModelFileParserHandler(yukinoModelManager)
+                });
+        try {
+            config.setSqlSessionFactory(
+                    new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream("mybatis-config.xml"))
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return config;
+    }
     @Bean
     public YukinoModelManager yukinoModelManager() {
         return new YukinoModelManager();
@@ -25,21 +59,9 @@ public class YukinoApplicationConfiguration {
     }
 
     @Bean
-    public YukinoConfigManager yukinoConfigManager() {
-        return new YukinoConfigManager();
-    }
-
-    @Bean
-    public YukinoDaoService yukinoDataService(YukinoConfigManager yukinoConfigManager,
-                                              YukinoModelManager yukinoModelManager) {
-        return new YukinoDaoService(yukinoConfigManager, yukinoModelManager);
-    }
-
-    @Bean
-    public YukinoApplication yukinoApplication(YukinoModelManager yukinoModelManager,
-                                               YukinoJsonManager yukinoJsonManager,
-                                               YukinoConfigManager yukinoConfigManager,
-                                               YukinoDaoService yukinoDaoService) {
-        return new YukinoApplication(yukinoModelManager, yukinoJsonManager, yukinoConfigManager, yukinoDaoService);
+    public YukinoConfigManager yukinoConfigManager(YukinoJsonManager yukinoJsonManager, YukinoModelManager yukinoModelManager) {
+        YukinoConfigManager yukinoConfigManager = new YukinoConfigManager();
+        yukinoConfigManager.put("default", getConfig(yukinoJsonManager, yukinoModelManager));
+        return yukinoConfigManager;
     }
 }

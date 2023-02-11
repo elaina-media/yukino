@@ -9,6 +9,7 @@ version '0.0.1'
 
 repositories {
     mavenCentral()
+    mavenLocal()
 }
 
 
@@ -28,6 +29,8 @@ dependencies {
     implementation 'org.springframework:spring-context:5.3.21'
     implementation 'org.springframework:spring-beans:5.3.21'
     implementation 'org.springframework:spring-core:5.3.21'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:3.0.2'
+    implementation 'net.mikoto:yukino-spring-boot-autoconfigurer:0.0.1'
 
     // Utils
     implementation 'cn.hutool:hutool-all:5.8.8'

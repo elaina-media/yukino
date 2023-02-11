@@ -1,3 +1,4 @@
 rootProject.name = 'yukino'
 include 'yukino-spring-boot-starter'
+include 'yukino-spring-boot-autoconfigurer'
 
