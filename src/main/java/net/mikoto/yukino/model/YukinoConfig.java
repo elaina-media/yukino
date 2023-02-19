@@ -2,7 +2,6 @@ package net.mikoto.yukino.model;
 
 import lombok.Data;
 import net.mikoto.yukino.parser.ParserHandle;
-import org.apache.ibatis.session.SqlSessionFactory;
 
 /**
  * @author mikoto
@@ -10,9 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
  * Create for yukino
  */
 @Data
-public class Config {
+public class YukinoConfig {
     private ParserHandle<?, ?>[] parserHandles;
     private String modelsPath = "/models";
-    private boolean isCheckModel = false;
-    private SqlSessionFactory sqlSessionFactory;
 }

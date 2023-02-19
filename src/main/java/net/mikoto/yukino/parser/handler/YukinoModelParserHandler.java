@@ -20,8 +20,13 @@ public abstract class YukinoModelParserHandler extends FileParserHandle<YukinoMo
     }
 
     @Override
-    public void parserHandle(Object file) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        YukinoModel yukinoModel = doParse((File) file);
+    public void parserHandle(Object file) {
+        YukinoModel yukinoModel = null;
+        try {
+            yukinoModel = doParse((File) file);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         if (yukinoModel != null) {
             yukinoModelManager.register(yukinoModel);
         }

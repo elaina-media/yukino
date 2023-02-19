@@ -3,8 +3,9 @@ package net.mikoto.yukino.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.mikoto.yukino.strategy.PrimaryKeyGenerateStrategy;
-import net.mikoto.yukino.strategy.TableNameStrategy;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -12,7 +13,21 @@ import net.mikoto.yukino.strategy.TableNameStrategy;
 public class YukinoModel {
     private String modelName;
     private Field[] fields;
-    private TableNameStrategy tableNameStrategy;
-    private PrimaryKeyGenerateStrategy<?> pkGenerateStrategy;
-    private Integer idFieldIndex = 0;
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Field {
+        String className;
+        String fieldName;
+    }
+
+    public static boolean doCheckModel(@NotNull YukinoModel yukinoModel, Map<String, Object> data) {
+        for (YukinoModel.Field field :
+                yukinoModel.getFields()) {
+            if (!data.containsKey(field.getFieldName())) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

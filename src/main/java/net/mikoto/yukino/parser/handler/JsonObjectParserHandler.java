@@ -21,8 +21,12 @@ public abstract class JsonObjectParserHandler extends FileParserHandle<JSONObjec
     }
 
     @Override
-    public void parserHandle(Object target) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        yukinoJsonManager.put(((File) target).getName(), doParse((File) target));
+    public void parserHandle(Object target) {
+        try {
+            yukinoJsonManager.put(((File) target).getName(), doParse((File) target));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         super.parserHandle(target);
     }
 }

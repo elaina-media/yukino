@@ -27,10 +27,5 @@
     ["java.lang.String", "nextTitle"],
     ["java.lang.Integer", "previousArtworkGlobalId"],
     ["java.lang.String", "previousTitle"]
-  ],
-  "tableNameStrategy" : {
-    "type": "net.mikoto.yukino.strategy.impl.LongModuloStrategy",
-    "paramTypes": ["java.lang.String", "java.lang.String", "java.lang.Integer"],
-    "values": ["artworkGlobalId", "illustration_%i", 100]
-  }
+  ]
 }
